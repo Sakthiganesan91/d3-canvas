@@ -1,4 +1,4 @@
-import * as d3 from "d3";
+import { max, scaleLinear, scaleBand } from "d3";
 import { useEffect, useRef } from "react";
 import dd from "./data.json";
 const formatter = Intl.NumberFormat("en", {
@@ -16,17 +16,15 @@ const data = dd.groupMapping.NO_GROUP.map((no_group) => {
 const width = 750;
 const height = 300;
 
-const maxValue = d3.max(data, function (d) {
+const maxValue = max(data, function (d) {
   return d.value;
 });
-const xScale = d3
-  .scaleBand()
+const xScale = scaleBand()
   .domain(data.map((d) => d.category))
   .range([0, width])
   .padding(0.1);
 
-const yScale = d3
-  .scaleLinear()
+const yScale = scaleLinear()
   .domain([0, maxValue + 1000000])
   .range([height, 0]);
 function App() {
