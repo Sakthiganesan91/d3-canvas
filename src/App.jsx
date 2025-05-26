@@ -48,14 +48,14 @@ function App() {
       context.stroke();
       context.strokeStyle = "black";
       context.setLineDash([0, 0]);
-      context.fillText(formatter.format(tick.toString()), 0, y);
+      context.fillText(formatter.format(tick.toString()), 15, y);
     });
   };
 
   const drawXLine = (context) => {
     context.beginPath();
-    context.moveTo(50, height);
-    context.lineTo(width, height);
+    context.moveTo(50, height - 12);
+    context.lineTo(width, height - 12);
     context.stroke();
   };
 
