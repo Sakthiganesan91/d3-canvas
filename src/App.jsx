@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import dd from "./data.json";
 const formatter = Intl.NumberFormat("en", {
   notation: "compact",
-  minimumFractionDigits: 1,
   maximumFractionDigits: 2,
 });
 const data = dd.groupMapping.NO_GROUP.map((no_group) => {
@@ -13,8 +12,8 @@ const data = dd.groupMapping.NO_GROUP.map((no_group) => {
   };
 });
 
-const width = 750;
-const height = 300;
+const width = 1000;
+const height = 500;
 
 const maxValue = max(data, function (d) {
   return d.value;
@@ -25,7 +24,7 @@ const xScale = scaleBand()
   .padding(0.1);
 
 const yScale = scaleLinear()
-  .domain([0, maxValue + 1000000])
+  .domain([0, maxValue + 500000])
   .range([height, 0]);
 function App() {
   const canvasRef = useRef();
