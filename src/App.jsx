@@ -45,9 +45,11 @@ function App() {
       context.beginPath();
       context.moveTo(50, y - 4);
       context.lineTo(width, y);
+      context.setLineDash([5, 2]);
       context.strokeStyle = "#ddd";
       context.stroke();
       context.strokeStyle = "black";
+      context.setLineDash([0, 0]);
       context.fillText(formatter.format(tick.toString()), 0, y);
     });
   };
