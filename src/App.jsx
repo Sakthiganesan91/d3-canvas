@@ -39,16 +39,16 @@ function App() {
     ticks.forEach((tick, index) => {
       if (index === 0) return;
       const y = yScale(tick);
-      context.font = "italic 10pt Calibri";
+      context.font = "italic 10px Calibri";
       context.fillStyle = "black";
 
       context.beginPath();
-      context.moveTo(50, y);
+      context.moveTo(50, y - 4);
       context.lineTo(width, y);
       context.strokeStyle = "#ddd";
       context.stroke();
       context.strokeStyle = "black";
-      context.fillText(formatter.format(tick.toString()), 0, y + 7.5);
+      context.fillText(formatter.format(tick.toString()), 0, y);
     });
   };
 
@@ -117,7 +117,7 @@ function App() {
 
     if (canvas) {
       const canvasContext = canvas.getContext("2d");
-      canvasContext.font = "italic 10pt Calibri";
+      canvasContext.font = "italic 10px Calibri";
       canvasContext.fillStyle = "black";
       drawYLine(canvasContext);
       drawXLine(canvasContext);
