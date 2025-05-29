@@ -44,7 +44,7 @@ const GChart = () => {
 
   const drawXLine = (context) => {
     context.beginPath();
-    context.moveTo(0, height - padding * 5);
+    context.moveTo(padding, height - padding * 5);
     context.lineTo(width, height - padding * 5);
     context.stroke();
   };
@@ -54,10 +54,12 @@ const GChart = () => {
     context.strokeStyle = color;
     context.moveTo(padding, yScale(line));
     context.lineTo(width, yScale(line));
+    context.setLineDash([5, 2]);
+    context.stroke();
+    context.setLineDash([0, 0]);
     context.font = "italic 10px Calibri";
     context.fillStyle = color;
     context.fillText(text, width - padding, yScale(line) - 2);
-    context.stroke();
     context.strokeStyle = "black";
   };
 
@@ -91,14 +93,10 @@ const GChart = () => {
 
     data.forEach((d, index) => {
       if (index === 0) return;
-
       context.lineTo(xScale(d.date) + bandWidth / 2, yScale(d.value));
-
       context.save();
       const x = xScale(d.date) - padding * 2;
-
       const y = height - padding * 2;
-      console.log(x, y);
       context.translate(x, y);
       context.rotate(-Math.PI / 4);
       context.fillText(d.date, 0, 0);

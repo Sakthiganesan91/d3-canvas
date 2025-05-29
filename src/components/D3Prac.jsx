@@ -25,9 +25,6 @@ function D3Prac() {
     <>
       <svg width={width} height={height} style={svgStyles}>
         {data.map((d) => {
-          console.log(
-            `${d.category} - X: ${xScale(d.category)} - Y: ${yScale(d.value)}`
-          );
           return (
             <g key={d.category}>
               <rect
