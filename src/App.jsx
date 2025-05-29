@@ -24,7 +24,7 @@ const xScale = scaleBand()
   .padding(0.1);
 
 const yScale = scaleLinear()
-  .domain([0, maxValue + 500000])
+  .domain([0, maxValue + 1000000])
   .range([height, 0]);
 function App() {
   const canvasRef = useRef();
